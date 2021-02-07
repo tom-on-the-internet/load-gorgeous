@@ -21,14 +21,14 @@ async function onFormSubmitGorgeous(event) {
   flattery.classList.remove("hidden");
 
   const devices = await navigator.mediaDevices.enumerateDevices();
-  const tomsCamera = devices.find((device) => device.label.includes("C922"));
+
+  // You'll need to specify your camera here
+  // normally you'd use a drop down, but lol
+  const myCamera = devices.find((device) => device.label.includes("C922"));
 
   try {
-    const devices = await navigator.mediaDevices.enumerateDevices();
-    console.log(devices);
-
     const stream = await navigator.mediaDevices.getUserMedia({
-      video: { deviceId: tomsCamera.deviceId },
+      video: { deviceId: myCamera.deviceId },
     });
 
     setTimeout(() => {
@@ -78,4 +78,5 @@ function onFormSubmit(event) {
   }, 10000);
 }
 
+// form.addEventListener("submit", onFormSubmit);
 form.addEventListener("submit", onFormSubmitGorgeous);
